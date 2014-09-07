@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Celia La - {{ 'Home' if nav == 'home' else page.meta.title }}
+{% endblock %}
+
+{% block content %}
+<h1><a href="{{ url_for('page', path=page.path) }}">{{ page.meta.title }}</a></h1>
+
+<p>{{ page.meta.date | datetime }}
+
+{% if page.meta.tags %}
+	/ tagged in:
+	{% for t in page.meta.tags.split() %}
+		<a href="{{ url_for('tag', tag_name=t) }}">{{ t }}</a>
+	{% endfor %}
+{% endif %}
+
+</p>
+
+<hr/>
+
+{{ page }}
+
+
+{% endblock %}
+

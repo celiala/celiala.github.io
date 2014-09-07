@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_title %}Celia La - Archives{% endblock %}
+
+{% block content %}
+
+<h2>Archives</h2>
+
+<ul class="page-list">
+  {% for page in pages %}
+      <li><a href="{{ url_for('page', path=page.path) }}">
+          {{ page.meta.title }}
+      </a>- {{ page.meta.date | datetime }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

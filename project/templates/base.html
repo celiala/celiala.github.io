@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+  <title>{% block page_title %}Your Site{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/blog.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for Flask-FlatPages Pygments-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pygments.css') }}">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+
+            {% for item in 'home archives notebooks'.split() %}
+                {% if item == 'notebooks' %}
+                    <a class="blog-nav-item" href="http://nbviewer.ipython.org/github/celiala/notebooks/tree/master/">Notebooks</a>
+                {% else %}
+                    <a class="blog-nav-item{%- if item == nav %} active{% endif %}" href="{{ url_for(item) }}">{{ item | capitalize }}</a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
+        <p class="lead blog-description">celiala.com: blogging to learn and remember things</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            {% block content %}{% endblock %}
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+              <p><a href="https://twitter.com/celiala">Celia La</a> is a software dev at
+                  <a href="http://www.knewton.com/">Knewton</a>, tech community organizer, and
+                  former <a href="https://play.spotify.com/album/3xw342YkRQve5swrCIN0nm">jazz musician</a>.
+                  She also enjoys biking, cooking, and sketching.
+              </p>
+          </div>
+
+          <div class="sidebar-module">
+            <h4>Most Recent</h4>
+            <ol class="list-unstyled">
+              {% for page in base.most_recent %}
+                  <li><a href="{{ url_for('page', path=page.path) }}">
+                      {{ page.meta.title }}
+                  </a></li>
+              {% endfor %}
+            </ol>
+
+          </div>
+
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/docs.min.js') }}"></script>
+
+  </body>
+</html>
