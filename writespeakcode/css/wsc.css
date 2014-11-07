@@ -1,0 +1,73 @@
+.content {
+    margin: 120px 80px 40px 80px;
+}
+
+.content ul {
+    margin-left: 1em;
+}
+
+.slide {
+    display: block;
+
+    width: 900px;
+    height: 700px;
+
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+
+    color: rgb(102, 102, 102);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
+}
+
+.vcenter {
+    position: relative;
+    top: 25%;
+}
+
+.center {
+    text-align: center;
+}
+
+.slide-image {
+    float: right;
+    width: 33%;
+    padding-left: 20px;
+}
+
+.credit {
+    position: relative;
+    bottom: 0;
+    font-size: 14px;
+    font-style: italic;
+    color: #aaa;
+    font-family: Arial, sans-serif;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 80px 40px 0;
+}
+
+.slide-header {
+    margin-bottom: 1.3em;
+}
+
+.deemphasize {
+    color: #aaa;
+    font-style: italic;
+    line-height: 120%;
+    font-size: smaller;
+}
+
+a, a:link, a:visited {
+    color: #d84455;
+}
